@@ -2,7 +2,7 @@
 
 *Prep discipline for autonomous coding agents.*
 
-> Dandori ((段取り) is the trades word for the prep before the work—the carpenter's bench laid out before the saw bites, the chef's mise en place set before the burner is lit. The work goes smoothly because the dandori was thorough. This skill does the dandori for an autonomous coding agent: a planning conversation becomes a surgical task spec the agent executes on its own.
+> Dandori (段取り) is the trades word for the prep before the work—the carpenter's bench laid out before the saw bites, the chef's mise en place set before the burner is lit. The work goes smoothly because the dandori was thorough. This skill does the dandori for an autonomous coding agent: a planning conversation becomes a surgical task spec the agent executes on its own.
 
 ## Kokoroe
 

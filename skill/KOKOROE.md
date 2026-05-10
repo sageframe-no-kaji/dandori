@@ -1,8 +1,8 @@
-# KOKOROE
+# Kokoroe (心得)
 
-The five guidelines that govern how an autonomous coding agent should operate when executing an agent task spec. The task format produced by `dandori` works to the extent the executing agent honors them.
+The five guidelines an autonomous coding agent operates under when executing a `dandori` spec—kokoroe, the practitioner's internalized discipline of care, intention, and specificity carried as a stance, not a checklist. The format works to the extent the agent honors them.
 
-These are the agent's posture, not the task's content. Each task spec describes what to produce; these guidelines describe how to approach producing it.
+The spec describes what to produce; the guidelines describe how.
 
 ## Installation
 

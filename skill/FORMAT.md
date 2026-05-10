@@ -1,18 +1,18 @@
 # Agent Task Format
 
-The full format reference for an agent task — the surgical spec that an autonomous coding agent reads to execute one bounded unit of work. Loaded by `agent-task-author` when drafting any non-trivial task. Also usable directly as documentation for practitioners authoring tasks by hand.
+The full format reference for an agent task — the surgical spec that an autonomous coding agent reads to execute one bounded unit of work. Loaded by `dandori` when drafting any non-trivial task. Also usable directly as documentation for practitioners authoring tasks by hand.
 
 Agent tasks are surgical specs. The agent reads one and produces a defined output, with explicit acceptance criteria and verification steps. Each task is one bounded unit of work — small enough to fit in a single agent session, large enough to be worth handing off as a standalone artifact.
 
 ---
 
-## Behavioral context
+## KOKOROE context
 
-Agent tasks are executed by an agent operating under a small set of behavioral guidelines. Those guidelines live in a separate file in this skill — `BEHAVIORAL-CONTEXT.md` — because they're meant to be installed in the project's `CLAUDE.md` (or equivalent for the practitioner's IDE) rather than embedded in every task spec.
+Agent tasks are executed by an agent operating under a small set of behavioral guidelines. Those guidelines live in a separate file in this skill — `KOKOROE.md` — because they're meant to be installed in the project's `CLAUDE.md` (or equivalent for the practitioner's IDE) rather than embedded in every task spec.
 
 The summary, for context: the executing agent thinks before coding, writes the minimum code that solves the problem, makes surgical changes that touch only what the spec names, and treats the Acceptance section as the definition of done.
 
-The format below assumes those guidelines are loaded. When they are not, the task spec compensates — more explicit `Do Not` items, more conservative `Required Changes`, stricter `Acceptance` — but the cleaner pattern is to load the guidelines once at the project level and let each spec stay tight. See `BEHAVIORAL-CONTEXT.md` for the full text and installation guidance.
+The format below assumes those guidelines are loaded. When they are not, the task spec compensates — more explicit `Do Not` items, more conservative `Required Changes`, stricter `Acceptance` — but the cleaner pattern is to load the guidelines once at the project level and let each spec stay tight. See `KOKOROE.md` for the full text and installation guidance.
 
 ---
 

@@ -1,9 +1,9 @@
 ---
-name: agent-task-author
+name: dandori (段取り)
 description: Author a surgical agent task spec — a structured markdown file that an autonomous coding agent reads to execute one bounded unit of work. Use whenever the user wants to draft an agent task, write a spec for an agent or for Claude Code, package a piece of conversation as something an agent can run independently, turn planning decisions into an executable instruction, or convert a discussion into a buildable task. Also trigger when the user says things like "write me a prompt for the agent," "package this for Claude Code," "make this into a task spec," "turn this into something agentic to run," "draft me an instruction the agent can execute," or similar. Produces a markdown file with goal, files, required changes, acceptance criteria, verification commands, and commit format. Handles standalone tasks (no parent context) and tasks that are part of a larger project document. The skill interrogates only gaps it can't infer from context — it never asks for what's already visible.
 ---
 
-# Agent Task Author
+# Dandori
 
 A skill for translating a conversation's decisions into a surgical task spec that an autonomous coding agent can execute independently.
 
@@ -56,7 +56,7 @@ The skill keeps interrogating until every required section can be drafted unambi
 
 1. **Detect inputs from context.** Before asking anything, scan the conversation for goal, file boundaries, change list, acceptance signals, and verification commands. Note what's present and what's missing.
 
-2. **Check the behavioral context.** See if the five behavioral guidelines (Context-first, Spec as authorization, Verify by command, Halt and surface, Honor the boundary) are loaded in the executing environment. They live in `BEHAVIORAL-CONTEXT.md` in this skill. The check matters because their presence determines how defensive the task spec needs to be — see "Behavioral context check" below.
+2. **Check the KOKOROE context.** See if the five behavioral guidelines (Context-first, Spec as authorization, Verify by command, Halt and surface, Honor the boundary) are loaded in the executing environment. They live in `KOKOROE.md` in this skill. The check matters because their presence determines how defensive the task spec needs to be — see "KOKOROE context check" below.
 
 3. **Interrogate the gaps.** For each required section that isn't fully derivable from context, ask. Group questions thoughtfully — don't fire one at a time when several are related. Don't ask about things the conversation already established.
 
@@ -87,9 +87,9 @@ The full format reference is in `FORMAT.md`. This is the one-line version of eac
 - Do Not: explicit out-of-scope items the agent might otherwise wander into.
 - Stop Condition: when to halt and surface instead of continuing.
 
-## Behavioral context check
+## KOKOROE context check
 
-The agent task format assumes the executing agent operates under a small set of behavioral guidelines: state assumptions, write minimum code, make surgical changes, define verifiable goals. These guidelines are documented in `BEHAVIORAL-CONTEXT.md`.
+The agent task format assumes the executing agent operates under a small set of behavioral guidelines: state assumptions, write minimum code, make surgical changes, define verifiable goals. These guidelines are documented in `KOKOROE.md`.
 
 Their job is to govern how the *executing* agent behaves when it picks up the task spec, not how this authoring skill behaves when writing it. The format works to the extent the executing agent honors them.
 
@@ -120,7 +120,7 @@ The convention sorts naturally by date and carries semantics in the slug. The sk
 ## Reference files
 
 - **`FORMAT.md`** — the full format reference. Read this when drafting any non-trivial task. Contains every section's purpose and shape, the translation moves from intent to spec, anti-patterns, and the format checklist.
-- **`BEHAVIORAL-CONTEXT.md`** — the four behavioral guidelines. Used both as documentation of what the executing agent should be operating under, and as a copy-pasteable file the practitioner can install into their `CLAUDE.md`.
+- **`KOKOROE.md`** — the four behavioral guidelines. Used both as documentation of what the executing agent should be operating under, and as a copy-pasteable file the practitioner can install into their `CLAUDE.md`.
 - **`examples/standalone-utility.md`** — a no-parent maintenance task (dependency bump). Shows the minimum-viable shape.
 - **`examples/parented-implementation.md`** — a feature implementation task with a `parent:` field and a `Context` section. Shows the fuller shape when a task descends from a larger project document.
 - **`examples/exploration-with-stop-condition.md`** — an open-ended inspection task with a `Stop Condition` section. Shows the format for tasks that may surface findings the agent shouldn't act on alone.

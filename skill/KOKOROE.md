@@ -1,6 +1,6 @@
-# Behavioral Context
+# KOKOROE
 
-The five guidelines that govern how an autonomous coding agent should operate when executing an agent task spec. The task format produced by `agent-task-author` works to the extent the executing agent honors them.
+The five guidelines that govern how an autonomous coding agent should operate when executing an agent task spec. The task format produced by `dandori` works to the extent the executing agent honors them.
 
 These are the agent's posture, not the task's content. Each task spec describes what to produce; these guidelines describe how to approach producing it.
 
@@ -9,7 +9,7 @@ These are the agent's posture, not the task's content. Each task spec describes 
 The cleanest pattern is to install these guidelines once at the project level, where the executing agent loads them automatically every session. Two ways:
 
 1. **Append to your project's `CLAUDE.md`.** Copy everything from "## The five guidelines" below into your project's `CLAUDE.md`. The executing agent picks them up on every session in that project.
-2. **`@`-reference this file from `CLAUDE.md`.** If your IDE supports it, point at this file from the project's `CLAUDE.md` (`@.claude/skills/agent-task-author/BEHAVIORAL-CONTEXT.md` or wherever the skill lives in your tree).
+2. **`@`-reference this file from `CLAUDE.md`.** If your IDE supports it, point at this file from the project's `CLAUDE.md` (`@.claude/skills/dandori/KOKOROE.md` or wherever the skill lives in your tree).
 
 When the guidelines are not loaded at the project level, the alternative is to embed them inline in every agent task spec. That works but bloats the spec. Prefer the project-level install.
 

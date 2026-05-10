@@ -63,6 +63,20 @@ Dandori is part of two larger projects.
 
 If you arrived here from Karpathy or from Anthropic's skills documentation, the wider framework is at sageframe.substack.com. If you arrived from the writing, this is what one node of the methodology looks like in practice.
 
+## Where the Koans Come From
+
+The five koans aren't generic AI advice. Each is rooted in something I've argued in [Constructive Interference](https://sageframe.substack.com).
+
+1. **Honor the given** — the discipline of [clear intent without predetermined outcome](https://sageframe.substack.com/p/walking-without-google-maps), reading the terrain before mapping it.
+
+2. **If the spec did not ask, do not give** — the visibility gap named in [Prompting, Not Programming](https://sageframe.substack.com/p/prompting-not-programming): disciplined AI work shows its scaffolding, every change traceable to an authorized decision.
+
+3. **If a command cannot prove it, it is not done** — the operational answer to [Bad Vibes](https://sageframe.substack.com/p/bad-vibes): felt confidence collapses when the verification work was skipped.
+
+4. **Surprise is signal; halt** — [Walking Without Google Maps](https://sageframe.substack.com/p/walking-without-google-maps) again, this time for the secret camino: the unexpected belongs to the practitioner, not to be paved over.
+
+5. **Propose, do not decide** — [Thinking Outside the Skull](https://sageframe.substack.com/p/thinking-outside-the-skull) on distributed cognition: participants in a cognitive system do different kinds of work, and the architectural decisions stay with the human.
+
 ## How It Works
 
 The skill is a markdown package the agent reads when triggered. Four files plus three worked examples:

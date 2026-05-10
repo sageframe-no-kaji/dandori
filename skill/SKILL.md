@@ -56,7 +56,7 @@ The skill keeps interrogating until every required section can be drafted unambi
 
 1. **Detect inputs from context.** Before asking anything, scan the conversation for goal, file boundaries, change list, acceptance signals, and verification commands. Note what's present and what's missing.
 
-2. **Check the behavioral context.** See if the four behavioral guidelines (Think before coding, Simplicity first, Surgical changes, Goal-driven execution) are loaded in the executing environment. They live in `BEHAVIORAL-CONTEXT.md` in this skill. The check matters because their presence determines how defensive the task spec needs to be — see "Behavioral context check" below.
+2. **Check the behavioral context.** See if the five behavioral guidelines (Context-first, Spec as authorization, Verify by command, Halt and surface, Honor the boundary) are loaded in the executing environment. They live in `BEHAVIORAL-CONTEXT.md` in this skill. The check matters because their presence determines how defensive the task spec needs to be — see "Behavioral context check" below.
 
 3. **Interrogate the gaps.** For each required section that isn't fully derivable from context, ask. Group questions thoughtfully — don't fire one at a time when several are related. Don't ask about things the conversation already established.
 

@@ -59,7 +59,7 @@ Good: "Implement `AnthropicParser` that reads Anthropic conversation exports and
 
 #### Files
 
-A bullet list of files the task creates or modifies. Use absolute paths from repo root. Indicate create vs. modify.
+A bullet list of files the task creates, modifies, or reads. Use absolute paths from repo root. Indicate `Create:`, `Modify:`, or `Read-only:` (read but not changed).
 
 ````markdown
 **Files**
@@ -67,6 +67,7 @@ A bullet list of files the task creates or modifies. Use absolute paths from rep
 - Create: `src/shuji/parsers/anthropic.py`
 - Create: `tests/parsers/test_anthropic.py`
 - Create: `tests/fixtures/anthropic/synthetic_5.json`
+- Read-only: `src/shuji/parsers/base.py` (Parser protocol reference)
 - Modify: `src/shuji/parsers/__init__.py` (add to `PARSERS` list)
 ````
 

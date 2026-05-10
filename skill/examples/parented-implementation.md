@@ -8,7 +8,7 @@ project: shuji
 
 **Goal**
 
-Implement `AnthropicParser` — a parser plugin that reads Anthropic conversation exports and yields validated `ConversationRecord` objects. Register it in the `PARSERS` list. Cover with unit tests against synthetic fixtures.
+Implement `AnthropicParser`—a parser plugin that reads Anthropic conversation exports and yields validated `ConversationRecord` objects. Register it in the `PARSERS` list. Cover with unit tests against synthetic fixtures.
 
 **Context**
 
@@ -63,6 +63,10 @@ uv run mypy src/shuji/parsers/anthropic.py
 
 # Smoke test the registration
 uv run python -c "from shuji.parsers import PARSERS; assert any(p.__name__ == 'AnthropicParser' for p in PARSERS)"
+
+# Manual check: review the diff to confirm no new top-level
+# dependencies were added.
+git diff pyproject.toml
 ```
 
 **Do Not**
@@ -80,7 +84,7 @@ feat(parsers): add AnthropicParser
 
 Implement AnthropicParser per the system design's parser plugin protocol.
 Yields ConversationRecord from Anthropic conversation exports. Strict error
-handling — raises MalformedExportError on the first malformed entry.
+handling—raises MalformedExportError on the first malformed entry.
 
 Tests: 6 passing.
 ```

@@ -6,11 +6,11 @@ status: ready
 
 **Goal**
 
-Inspect the real Anthropic conversation export at `~/exports/anthropic-2026-04.json` and report on its structural shape — top-level layout, per-conversation fields, message-level fields, edge cases, anything unexpected. Produce a written summary the practitioner can use to decide whether the existing parser schema needs revision.
+Inspect the real Anthropic conversation export at `~/exports/anthropic-2026-04.json` and report on its structural shape—top-level layout, per-conversation fields, message-level fields, edge cases, anything unexpected. Produce a written summary the practitioner can use to decide whether the existing parser schema needs revision.
 
 **Problem**
 
-The existing `AnthropicParser` was built against synthetic fixtures derived from documentation, not against real export data. The synthetic fixtures are five conversations; the real export is several thousand. There is reason to suspect the real export contains shapes the fixtures don't represent — attachments, tool calls, system messages, branching, edited messages — but no inventory exists.
+The existing `AnthropicParser` was built against synthetic fixtures derived from documentation, not against real export data. The synthetic fixtures are five conversations; the real export is several thousand. There is reason to suspect the real export contains shapes the fixtures don't represent—attachments, tool calls, system messages, branching, edited messages—but no inventory exists.
 
 **Files**
 
@@ -31,9 +31,9 @@ This task produces a report, not code. The report should cover:
 
 4. **Distributional notes.** Rough counts: total conversations, total messages, range of message-counts-per-conversation, range of timestamp values.
 
-5. **Schema gaps.** Anything in the real data that the current `AnthropicParser` would mishandle, miss, or fail on. Be specific — name the field and the expected failure mode.
+5. **Schema gaps.** Anything in the real data that the current `AnthropicParser` would mishandle, miss, or fail on. Be specific—name the field and the expected failure mode.
 
-6. **Recommendations.** For each schema gap, the agent's suggestion for what to do — but framed as a recommendation for the practitioner, not as something to act on.
+6. **Recommendations.** For each schema gap, the agent's suggestion for what to do—but framed as a recommendation for the practitioner, not as something to act on.
 
 The report goes in `agent-tasks/findings/2026-05-09-anthropic-export-shape.md`. Use markdown. Include short JSON snippets where they clarify a structural point, but redact any conversation content (replace text with `[redacted]`).
 

@@ -37,6 +37,13 @@ uv sync
 uv run pytest
 uv run ruff check .
 uv run mypy src/
+
+# Verify version pin
+grep 'fastapi.*0\.115' pyproject.toml
+
+# Manual check: review the diff to confirm only fastapi (and its
+# transitive deps) changed; no new top-level dependencies added.
+git diff pyproject.toml
 ```
 
 **Stop Condition**

@@ -48,7 +48,7 @@ Optional, included only when warranted:
 - **Do Not** — explicit out-of-scope items the agent might otherwise wander into.
 - **Stop Condition** — when to halt and surface findings instead of continuing.
 
-For each item, the skill scans the conversation for what's already established. If the goal was discussed, draft from that — don't ask. If the file boundaries are obvious from the architecture conversation, use them — don't ask. If something is genuinely unclear or missing, ask — and only ask for what's missing, not the whole intake.
+For each item, the skill scans the conversation for what's already established. If the goal was discussed, draft from that — don't ask. If the file boundaries are obvious from the architecture conversation, use them — don't ask. If something is unclear or missing, ask — and only ask for what's missing, not the whole intake.
 
 The skill keeps interrogating until every required section can be drafted unambiguously. "Satisfactory" means the spec is unambiguous enough that the executing agent can complete the work without asking the practitioner mid-execution.
 
@@ -89,7 +89,7 @@ The full format reference is in `FORMAT.md`. This is the one-line version of eac
 
 ## KOKOROE context check
 
-The agent task format assumes the executing agent operates under a small set of behavioral guidelines: state assumptions, write minimum code, make surgical changes, define verifiable goals. These guidelines are documented in `KOKOROE.md`.
+The agent task format assumes the executing agent operates under five behavioral guidelines: read what's loaded before acting, treat the spec as the authorization for every change, verify each acceptance criterion by runnable command, halt and surface when something surprises the agent, and honor the boundary between practitioner and agent decisions. These guidelines are documented in `KOKOROE.md`.
 
 Their job is to govern how the *executing* agent behaves when it picks up the task spec, not how this authoring skill behaves when writing it. The format works to the extent the executing agent honors them.
 
@@ -120,7 +120,7 @@ The convention sorts naturally by date and carries semantics in the slug. The sk
 ## Reference files
 
 - **`FORMAT.md`** — the full format reference. Read this when drafting any non-trivial task. Contains every section's purpose and shape, the translation moves from intent to spec, anti-patterns, and the format checklist.
-- **`KOKOROE.md`** — the four behavioral guidelines. Used both as documentation of what the executing agent should be operating under, and as a copy-pasteable file the practitioner can install into their `CLAUDE.md`.
+- **`KOKOROE.md`** — the five behavioral guidelines. Used both as documentation of what the executing agent should be operating under, and as a copy-pasteable file the practitioner can install into their `CLAUDE.md`.
 - **`examples/standalone-utility.md`** — a no-parent maintenance task (dependency bump). Shows the minimum-viable shape.
 - **`examples/parented-implementation.md`** — a feature implementation task with a `parent:` field and a `Context` section. Shows the fuller shape when a task descends from a larger project document.
 - **`examples/exploration-with-stop-condition.md`** — an open-ended inspection task with a `Stop Condition` section. Shows the format for tasks that may surface findings the agent shouldn't act on alone.

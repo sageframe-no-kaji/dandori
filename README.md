@@ -43,7 +43,7 @@ Dandori departs in two ways.
 
 **It separates authoring from execution.** Karpathy collapses "how to prepare a task" and "how to execute a task" into one set of rules. Dandori names them as two disciplines: dandori (the practitioner's prep) and kokoroe (the agent's stance). They sit on opposite sides of the handoff.
 
-**The kokoroe is rooted in practice, not paraphrase.** The five koans come from years of operating an actual methodology with autonomous agents. They include the cases Karpathy doesn't address: surprise as signal, the boundary between agent and practitioner authority, the spec as authorization that traces every change.
+**The kokoroe is rooted in practice, not paraphrase.** The five koans come from operating an actual methodology with autonomous agents. They include the cases Karpathy doesn't address: surprise as signal, the boundary between agent and practitioner authority, the spec as authorization that traces every change.
 
 ## Naming
 

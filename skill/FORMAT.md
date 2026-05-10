@@ -1,18 +1,16 @@
 # Agent Task Format
 
-The full format reference for an agent task — the surgical spec that an autonomous coding agent reads to execute one bounded unit of work. Loaded by `dandori` when drafting any non-trivial task. Also usable directly as documentation for practitioners authoring tasks by hand.
+The full format reference for an agent task: the surgical spec an autonomous coding agent reads to execute one bounded unit of work. Loaded by `dandori` when drafting any non-trivial task; also usable as direct documentation for practitioners authoring by hand.
 
-Agent tasks are surgical specs. The agent reads one and produces a defined output, with explicit acceptance criteria and verification steps. Each task is one bounded unit of work — small enough to fit in a single agent session, large enough to be worth handing off as a standalone artifact.
+Each task is one bounded unit of work—small enough for a single agent session, large enough to hand off as a standalone artifact. The agent reads one spec, produces defined output, and verifies against explicit acceptance criteria.
 
 ---
 
-## KOKOROE context
+## Kokoroe context
 
-Agent tasks are executed by an agent operating under a small set of behavioral guidelines. Those guidelines live in a separate file in this skill — `KOKOROE.md` — because they're meant to be installed in the project's `CLAUDE.md` (or equivalent for the practitioner's IDE) rather than embedded in every task spec.
+Agent tasks are executed under kokoroe—the five guidelines documented in `KOKOROE.md`. Their job is to govern how the *executing* agent behaves; the format below assumes they're loaded.
 
-The summary, for context: the executing agent thinks before coding, writes the minimum code that solves the problem, makes surgical changes that touch only what the spec names, and treats the Acceptance section as the definition of done.
-
-The format below assumes those guidelines are loaded. When they are not, the task spec compensates — more explicit `Do Not` items, more conservative `Required Changes`, stricter `Acceptance` — but the cleaner pattern is to load the guidelines once at the project level and let each spec stay tight. See `KOKOROE.md` for the full text and installation guidance.
+When they're not, the spec compensates—more explicit `Do Not` items, more conservative `Required Changes`, stricter `Acceptance`. The cleaner pattern is to load kokoroe once at the project level (see `KOKOROE.md` for installation) and let each spec stay tight.
 
 ---
 
@@ -20,37 +18,37 @@ The format below assumes those guidelines are loaded. When they are not, the tas
 
 **Naming:** `agent-task-YYYY-MM-DD-slug.md`
 
-- Date is the day the task was authored.
-- Slug is descriptive and short — three to six words, kebab-case.
+- Date the task was authored.
+- Slug: three to six words, kebab-case, descriptive.
 - Example: `agent-task-2026-05-09-bump-fastapi-0.115.md`.
 
-The convention sorts naturally by date and carries semantics in the slug.
+Sorts by date; carries semantics in the slug.
 
 **Location:** `agent-tasks/` at the repo root.
 
-If the project has an existing convention (e.g., `tasks/`, `specs/`), use that instead — check the file tree before defaulting. The principle is that all agent tasks live together in one directory so they can be pattern-matched across the project (find every task that touches a particular file, search for tasks that reference a specific dependency).
+If the project has another convention (e.g., `tasks/`, `specs/`), use it—check the file tree first. The principle: all agent tasks live in one directory so they can be pattern-matched (find every task that touches a particular file, find every task that references a specific dependency).
 
 ---
 
 ## Format
 
-Agent tasks have required sections (always present, even if brief) and optional sections (included when warranted). Order matters — agents read top to bottom.
+Agent tasks have required sections (always present, even if brief) and optional sections (included when warranted). Order matters—agents read top to bottom.
 
 ### Required sections
 
 #### Frontmatter
 
-```yaml
+````yaml
 ---
 created: YYYY-MM-DD
 type: agent-task
 status: ready              # ready | in-progress | complete | blocked
-parent: <slug or path>     # optional — fill in only if this task descends from a larger project doc
-project: <slug>            # optional — fill in only when relevant
+parent: <slug or path>     # optional—fill only if this task descends from a larger project doc
+project: <slug>            # optional—fill only when relevant
 ---
-```
+````
 
-The `parent` field is the link to whatever project document this task descends from — a system design, an RFC, a feature spec, a ho, anything. When the task is standalone (no parent doc), omit the field entirely. Don't fill it with a placeholder.
+The `parent` field links to whatever project document this task descends from—a system design, an RFC, a feature spec, a ho. When the task is standalone, omit the field entirely. Don't fill it with a placeholder.
 
 #### Goal
 
@@ -63,14 +61,14 @@ Good: "Implement `AnthropicParser` that reads Anthropic conversation exports and
 
 A bullet list of files the task creates or modifies. Use absolute paths from repo root. Indicate create vs. modify.
 
-```markdown
+````markdown
 **Files**
 
 - Create: `src/shuji/parsers/anthropic.py`
 - Create: `tests/parsers/test_anthropic.py`
 - Create: `tests/fixtures/anthropic/synthetic_5.json`
 - Modify: `src/shuji/parsers/__init__.py` (add to `PARSERS` list)
-```
+````
 
 If the file list is large, group by area. If a file is created and later modified within the same task, list it once with the more substantial action.
 
@@ -80,13 +78,13 @@ The substantive section. What the agent does, in enough detail that the work is 
 
 For each change:
 
-- **What** — the concrete artifact (function signature, test name, schema column).
-- **Why** — one line, only if not obvious from context.
-- **How** — only if the approach isn't obvious. Default to leaving how to the agent.
+- **What**—the concrete artifact (function signature, test name, schema column).
+- **Why**—one line, only if not obvious from context.
+- **How**—only if the approach isn't obvious. Default to leaving how to the agent.
 
 Example:
 
-```markdown
+````markdown
 **Required Changes**
 
 1. **Define `AnthropicParser` class** in `src/shuji/parsers/anthropic.py`.
@@ -102,15 +100,15 @@ Example:
 
 3. **Synthetic fixtures** in `tests/fixtures/anthropic/`.
    ...
-```
+````
 
-The agent reads this and knows exactly what artifacts to produce. The agent does not need to interpret architectural intent — that work happened in the planning conversation and was captured in the parent doc (if any) or in the Goal.
+The agent produces the named artifacts. Architectural intent was settled in the planning conversation and captured in the parent doc or Goal; the agent doesn't reinterpret it here.
 
 #### Acceptance
 
 The pass/fail criteria. The agent verifies these before declaring the task complete.
 
-```markdown
+````markdown
 **Acceptance**
 
 - [ ] `AnthropicParser` class exists in `src/shuji/parsers/anthropic.py` and implements the Parser protocol.
@@ -118,9 +116,9 @@ The pass/fail criteria. The agent verifies these before declaring the task compl
 - [ ] `AnthropicParser` registers in the `PARSERS` list.
 - [ ] Linting clean (ruff, mypy).
 - [ ] No new dependencies added beyond what `pyproject.toml` already declares.
-```
+````
 
-Use checkboxes — they're machine-readable and the practitioner can scan them.
+Use checkboxes—machine-readable, and the practitioner can scan them.
 
 #### Verification
 
@@ -142,11 +140,11 @@ uv run python -c "from shuji.parsers import PARSERS; print([p.__name__ for p in 
 ```
 ````
 
-The verification commands match the acceptance criteria one-to-one. If a criterion can't be verified by a runnable command, name the manual check explicitly.
+Verification commands match acceptance criteria one-to-one. If a criterion can't be verified by a runnable command, name the manual check explicitly.
 
 #### Commit
 
-The agent's commit instruction. Brief — message format and any commit-time discipline.
+The agent's commit instruction. Brief—message format and any commit-time discipline.
 
 ````markdown
 **Commit**
@@ -169,36 +167,36 @@ Include when warranted; omit when not.
 
 #### Context
 
-A few sentences if the task can't be understood from Goal alone. Reserved for cases where the parent doc or planning conversation produced background the agent needs.
+A few sentences when the task can't be understood from Goal alone—reserved for background from the parent doc or planning conversation that the agent needs.
 
-```markdown
+````markdown
 **Context**
 
 The parser plugin protocol was decided in the system design (see parent doc).
 Each parser implements `can_parse` (cheap dispatch check) and `parse` (the
-work). Strict error handling was chosen over lenient mode in v1 — the agent
+work). Strict error handling was chosen over lenient mode in v1; the agent
 does not need to revisit that decision.
-```
+````
 
 Used when the task references decisions made elsewhere that the agent can't see.
 
 #### Problem
 
-For fix-shaped or maintenance tasks: what's broken, what's the symptom. Skipped for feature-shaped tasks where the Goal section already states the work.
+For fix-shaped or maintenance tasks: what's broken, what's the symptom. Skipped for feature-shaped tasks where Goal already states the work.
 
-```markdown
+````markdown
 **Problem**
 
 The `summary` column was added in an earlier task but never populated. The
 titler module expects to read summaries from existing rows, so unpopulated
 rows raise. Backfill needed.
-```
+````
 
 #### Do Not
 
 Explicit out-of-scope items the agent might otherwise wander into. Reserved for cases where the boundary is non-obvious.
 
-```markdown
+````markdown
 **Do Not**
 
 - Do not add a migration framework. Schema changes are ALTER TABLE in the
@@ -206,29 +204,29 @@ Explicit out-of-scope items the agent might otherwise wander into. Reserved for 
 - Do not modify `ConversationRecord`'s public fields. The model is shared
   with the indexer; changing it has cross-cutting implications.
 - Do not add lenient parsing modes. Strict was decided in the system design.
-```
+````
 
-The Do Not section is a guard against drift. Use sparingly — every entry should be a real failure mode the agent might hit.
+A guard against drift. Use sparingly; every entry should be a failure mode the agent might hit.
 
 #### Stop Condition
 
 When to halt and surface to the practitioner instead of continuing. Used for tasks where the work might surface unexpected complexity or ambiguity.
 
-```markdown
+````markdown
 **Stop Condition**
 
 If a real Anthropic export reveals shape mismatches with the schema (fields
 not in the synthetic fixtures), stop and surface findings before modifying
 the data model. Schema decisions belong to the practitioner, not the agent.
-```
+````
 
-Especially useful for tasks that include real-data inspection — the inspection itself may produce findings the agent shouldn't act on alone.
+Especially useful for tasks that include real-data inspection—the inspection itself may produce findings the agent shouldn't act on alone.
 
 ---
 
 ## Translation moves: from intent to executable spec
 
-A planning conversation produces decisions. An agent task spec turns those decisions into something the executing agent can run. The translation isn't mechanical — it's a craft move. Some patterns:
+A planning conversation produces decisions. An agent task spec turns those decisions into something the executing agent can run. The translation isn't mechanical—it's a craft move. Patterns:
 
 ### Move 1: Decisions → interface specifications
 
@@ -256,11 +254,11 @@ If task A's verification depends on task B's output, A comes after B in the task
 
 - **Pseudocode in Required Changes.** Specs that try to write the implementation. The agent does the implementation; the task says what to produce.
 - **Acceptance criteria without verification commands.** A criterion the agent can't run a command for is a criterion the agent can't verify.
-- **Verification that doesn't match acceptance.** Acceptance says "tests pass," verification doesn't list how to run tests. Mismatch.
-- **Do Not entries that aren't real failure modes.** Padding with hypothetical drift. Each Do Not should be a real way the agent might wander.
-- **Stop Conditions on every task.** If every task has a Stop Condition, the practitioner is over-supervising. Reserve for tasks that genuinely warrant a halt.
+- **Verification that doesn't match acceptance.** Acceptance says "tests pass," verification doesn't list how. Mismatch.
+- **Do Not entries that aren't failure modes.** Padding with hypothetical drift. Each Do Not should describe a way the agent might wander.
+- **Stop Conditions on every task.** If every task has one, the practitioner is over-supervising. Reserve for tasks that warrant a halt.
 - **Tasks that combine multiple goals.** "Implement X and also fix Y while you're in there." Split. One Goal per task.
-- **Filling in `parent` with a placeholder.** If there's no parent doc, omit the field. Don't write `parent: none` or `parent: standalone`.
+- **`parent` filled with a placeholder.** If there's no parent doc, omit the field. Don't write `parent: none` or `parent: standalone`.
 - **Slugs that don't disambiguate.** `agent-task-2026-05-09-fix.md` tells you nothing. `agent-task-2026-05-09-fix-titler-summary-null-handling.md` does.
 
 ---

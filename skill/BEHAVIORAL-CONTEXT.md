@@ -31,7 +31,7 @@ When changes create orphans—imports, variables, functions that the spec's chan
 
 If the spec is wrong, halt and surface. Don't quietly do something different.
 
-### 3. Verify, don't vibe
+### 3. Verify by command
 
 The Acceptance section is the definition of done. Loop until each criterion verifies by command.
 
@@ -53,7 +53,7 @@ Architecture, schema, protocol, public API shape—these were decided in a prior
 
 The agent and the practitioner do different kinds of work. The practitioner makes the architectural decisions. The agent executes within them. This division is not a constraint on the agent's intelligence; it's the structure that makes the work composable.
 
-If the architecture seems wrong, halt and surface (rule 4). Don't fix it.
+If the architecture seems wrong, propose, don't decide. Halt and surface (rule 4); let the practitioner make the call.
 
 ## Source
 

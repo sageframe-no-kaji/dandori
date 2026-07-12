@@ -1,0 +1,81 @@
+{
+  "keisaku": 1,
+  "works": [
+    {
+      "id": "dandori",
+      "name": "Dandori",
+      "native_script": "段取り",
+      "native_translation": "Preparation; the order of things",
+      "hero": "A prompt is a sentence; a handoff is an artifact.",
+      "importance": 7,
+      "featured": true,
+      "group": "methodology",
+      "themes": [
+        "craft",
+        "agency"
+      ],
+      "sort_order_within_group": 20,
+      "tags": [
+        "methodology",
+        "agent-infrastructure",
+        "published",
+        "claude-skill",
+        "human-ai-collaboration"
+      ],
+      "media": [
+        "methodology"
+      ],
+      "status": "shipped",
+      "repo": "git@github-no-kaji:sageframe-no-kaji/dandori.git",
+      "license": "MIT",
+      "deployment": [
+        {
+          "label": "Claude Skill (GitHub)"
+        }
+      ],
+      "created": "2026-04-20",
+      "last_updated": "2026-07-09",
+      "conceived": "2026-05-10",
+      "short_description": "Methodology for autonomous coding agent prep discipline. A prompt is a sentence; a handoff is an artifact. Dandori transforms planning conversations into bounded markdown specs that the agent reads as one unit of work. Published as a Skill on GitHub. Sits alongside the Ho System: where Ho structures the practitioner's session, Dandori structures the agent's brief.",
+      "substantive_description": [
+        "The current generation of coding agents is capable of running unattended for hours on tasks they will get spectacularly wrong if briefed casually. The failure mode is structural: prompts are sentences, and sentences are the wrong artifact for autonomous work. Dandori is the answer in methodology form — a discipline for converting planning conversations into bounded, reviewable specifications the agent treats as one unit of work. The metaphor is correct: a Japanese workshop's dandori is the prep that makes the skilled labor possible.",
+        "The deeper argument is about authorship of agent work: who decided what gets built, and where in the artifact chain that decision is recorded. Without Dandori the answer is nobody, nowhere. With Dandori the answer is the practitioner, in the spec. That distinction is the difference between agent work that's auditable and agent work that's autopilot."
+      ],
+      "images": {
+        "gallery": []
+      },
+      "relationships": [
+        {
+          "edge_class": "narrative",
+          "target": "ho-system",
+          "type": "companion_to",
+          "note": "Where Ho structures the practitioner's session, Dandori structures the agent's brief."
+        }
+      ],
+      "state": {
+        "stage": "dev",
+        "last": "Project CLAUDE.md added importing operating-discipline rationale, closing the immediate framing work. Last meaningful commit: `ab6d1b7 add project CLAUDE.md importing operating-discipline rationale` (2026-07-01). Prior stretch added a working note PDF and visual README (seal, koans, cycle diagram).",
+        "next": "unset — practitioner to point (K6 seeded retroactively). Most plausible next steps based on repo evidence: further refinement of the dandori spec format, or expansion of worked examples in `skill/examples/`.",
+        "as_of": "2026-07-09"
+      },
+      "_keisaku": {
+        "generated_at": "2026-07-11T13:34:15",
+        "generator_version": "1",
+        "sources": {
+          "readme": "README.md",
+          "contract": "ho-process/kamae-6-dandori-state-memory.md"
+        },
+        "derived_defaults": {
+          "id": "dandori",
+          "name": "Bump fastapi 0.110 → 0.115",
+          "media": [
+            "software"
+          ],
+          "status": "in-development",
+          "created": "2026-05-09"
+        },
+        "contract_issues": []
+      }
+    }
+  ]
+}

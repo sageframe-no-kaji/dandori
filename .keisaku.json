@@ -36,10 +36,10 @@
       "created": "2026-04-20",
       "last_updated": "2026-07-09",
       "conceived": "2026-05-10",
-      "short_description": "Methodology for autonomous coding agent prep discipline. A prompt is a sentence; a handoff is an artifact. Dandori transforms planning conversations into bounded markdown specs that the agent reads as one unit of work. Published as a Skill on GitHub. Sits alongside the Ho System: where Ho structures the practitioner's session, Dandori structures the agent's brief.",
+      "short_description": "A discipline for preparing bounded specifications that an autonomous coding agent can execute as one unit of work — published as a Claude Skill.",
       "substantive_description": [
-        "The current generation of coding agents is capable of running unattended for hours on tasks they will get spectacularly wrong if briefed casually. The failure mode is structural: prompts are sentences, and sentences are the wrong artifact for autonomous work. Dandori is the answer in methodology form — a discipline for converting planning conversations into bounded, reviewable specifications the agent treats as one unit of work. The metaphor is correct: a Japanese workshop's dandori is the prep that makes the skilled labor possible.",
-        "The deeper argument is about authorship of agent work: who decided what gets built, and where in the artifact chain that decision is recorded. Without Dandori the answer is nobody, nowhere. With Dandori the answer is the practitioner, in the spec. That distinction is the difference between agent work that's auditable and agent work that's autopilot."
+        "The current generation of coding agents can run unattended for hours on tasks they will get spectacularly wrong if briefed casually. The failure is structural: a prompt is a sentence, and a sentence is the wrong artifact for autonomous work. Dandori is the answer in methodology form — a discipline for converting planning conversations into bounded, reviewable specifications the agent treats as one unit of work. The name is exact: a Japanese workshop's dandori (段取り) is the preparation that makes the skilled labor possible. The deeper argument is about authorship of agent work — who decided what gets built, and where in the artifact chain that decision is recorded; without Dandori the answer is nobody, nowhere, and with it the answer is the practitioner, in the spec. That distinction is the difference between agent work that is auditable and agent work that is autopilot; it sits alongside the Ho System, where Ho structures the practitioner's session and Dandori structures the agent's brief.",
+        "Dandori is a methodology published as a Claude Skill — a structured markdown instruction set an agent reads to author a task spec — distributed via GitHub."
       ],
       "images": {
         "gallery": []
@@ -59,11 +59,12 @@
         "as_of": "2026-07-09"
       },
       "_keisaku": {
-        "generated_at": "2026-07-12T10:36:23",
+        "generated_at": "2026-07-13T10:31:21",
         "generator_version": "1",
         "sources": {
           "readme": "README.md",
-          "contract": "ho-process/kamae-6-dandori-state-memory.md"
+          "contract": "ho-process/kamae-6-dandori-state-memory.md",
+          "description": "metadata/description.md"
         },
         "derived_defaults": {
           "id": "dandori",
@@ -72,7 +73,12 @@
             "software"
           ],
           "status": "in-development",
-          "created": "2026-05-09"
+          "created": "2026-05-09",
+          "short_description": "A discipline for preparing bounded specifications that an autonomous coding agent can execute as one unit of work — published as a Claude Skill.",
+          "substantive_description": [
+            "The current generation of coding agents can run unattended for hours on tasks they will get spectacularly wrong if briefed casually. The failure is structural: a prompt is a sentence, and a sentence is the wrong artifact for autonomous work. Dandori is the answer in methodology form — a discipline for converting planning conversations into bounded, reviewable specifications the agent treats as one unit of work. The name is exact: a Japanese workshop's dandori (段取り) is the preparation that makes the skilled labor possible. The deeper argument is about authorship of agent work — who decided what gets built, and where in the artifact chain that decision is recorded; without Dandori the answer is nobody, nowhere, and with it the answer is the practitioner, in the spec. That distinction is the difference between agent work that is auditable and agent work that is autopilot; it sits alongside the Ho System, where Ho structures the practitioner's session and Dandori structures the agent's brief.",
+            "Dandori is a methodology published as a Claude Skill — a structured markdown instruction set an agent reads to author a task spec — distributed via GitHub."
+          ]
         },
         "contract_issues": []
       }

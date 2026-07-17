@@ -52,6 +52,8 @@
           "note": "Where Ho structures the practitioner's session, Dandori structures the agent's brief."
         }
       ],
+      "availability": "shipped",
+      "usage": "me",
       "state": {
         "stage": "dev",
         "last": "Project CLAUDE.md added importing operating-discipline rationale, closing the immediate framing work. Last meaningful commit: `ab6d1b7 add project CLAUDE.md importing operating-discipline rationale` (2026-07-01). Prior stretch added a working note PDF and visual README (seal, koans, cycle diagram).",

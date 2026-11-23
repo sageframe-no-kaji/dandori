@@ -15,7 +15,7 @@
 
 ---
 
-You have a planning conversation in the chat. Dandori turns that conversation into a markdown spec at `agent-tasks/agent-task-YYYY-MM-DD-slug.md` — goal, files, required changes, acceptance criteria, verification commands, commit format. You hand the spec to an autonomous coding agent. The agent operates under five behavioral guidelines (kokoroe, installed once in `CLAUDE.md`) and executes the bounded task.
+You have a planning conversation in the chat. Dandori turns that conversation into a markdown spec at `agent-tasks/agent-task-YYYY-MM-DD-slug.md` — goal, files, required changes, acceptance criteria, verification commands, commit format. You hand the spec to an autonomous coding agent. The agent operates under five behavioral guidelines (kokoroe, loaded with the project instructions) and executes the bounded task.
 
 **Markdown only. No runtime. The skill is a methodology artifact, not a service.**
 
@@ -24,53 +24,41 @@ dandori/
 ├── SKILL.md       # entry point
 ├── KOKOROE.md     # the five guidelines
 ├── FORMAT.md      # the spec format reference
-└── examples/      # three worked examples
+├── HO.md          # conventions for Ho System projects
+└── examples/      # worked task specs
 ```
 
 ---
 
 ## Install
 
-Clone into your `.claude/skills/` directory:
+Unpack the [skill package](DANDORI.skill) into the directory your agent reads for project skills. Use the row for your environment.
+
+| Agent | Destination from the project root | Project instructions |
+|---|---|---|
+| Codex | `.agents/skills/dandori/` | `AGENTS.md` |
+| Claude Code | `.claude/skills/dandori/` | `CLAUDE.md` or the shared instructions Claude loads for this project |
+
+For example, to install for Codex:
 
 ```bash
-cd .claude/skills
-git clone https://github.com/sageframe-no-kaji/dandori.git
+mkdir -p .agents/skills/dandori
+unzip /path/to/DANDORI.skill -d .agents/skills/dandori
 ```
 
-Install kokoroe at the project level so the agent loads it every session:
+For another host, use its skill directory. If it has no skill loader, give the author [SKILL.md](skill/SKILL.md) and access to the files beside it. A source checkout's `skill/` directory contains the same files as the package.
 
-```bash
-cat .claude/skills/dandori/KOKOROE.md >> CLAUDE.md
-```
-
-Or `@`-reference it from `CLAUDE.md`:
-
-```
-@.claude/skills/dandori/KOKOROE.md
-```
-
-That's it. Restart your session and the skill is available.
+Put the [five kokoroe guidelines](skill/KOKOROE.md) in the project instructions the executor reads, or include them in the task spec. The author and executor can use different tools.
 
 ---
 
 ## Use
 
-In any session with Claude Code (or a compatible agent):
+Ask the agent to use Dandori by name:
 
-```
-/dandori I want to fix the FFmpeg pipe deadlock in Kanyō.
-Interrogate me until you have everything you need, then
-package the decisions as an agent task I can hand off.
-```
+> Use Dandori to turn our decisions about the FFmpeg pipe deadlock in Kanyō into a task spec. Ask about any decisions still missing.
 
-Other shapes that trigger the skill:
-
-- *"Draft me an agent task to bump fastapi from 0.110 to 0.115"*
-- *"Package what we just decided as a spec"*
-- *"Turn this conversation into something the agent can run"*
-
-The skill interrogates you for what's missing, drafts the spec, and saves it. Worked examples live in [`examples/`](./examples).
+The skill saves the spec in the project. [Worked examples](skill/examples) show standalone maintenance, parented implementation, and exploration.
 
 A generated spec looks roughly like this:
 
@@ -108,7 +96,7 @@ The agent reads this spec, executes inside it, and surfaces anything that doesn'
 
 ## Kokoroe (心得)
 
-The agent operates under **kokoroe** — the practitioner's internalized discipline of care, intention, and specificity. Five guidelines, installable once in your project's `CLAUDE.md`:
+The agent operates under **kokoroe** — the practitioner's internalized discipline of care, intention, and specificity. Five guidelines, installable once in your project's agent instructions:
 
 <p align="center">
   <img src="docs/img/koans.png" alt="The five koans" width="720" />

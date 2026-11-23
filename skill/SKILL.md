@@ -1,6 +1,6 @@
 ---
 name: dandori
-description: Author a surgical agent task spec—a structured markdown file an autonomous coding agent reads to execute one bounded unit of work. Use when the user wants to draft an agent task, write a spec for an agent or Claude Code, package a conversation as something an agent can run independently, turn planning decisions into an executable instruction, or convert a discussion into a buildable task. Also trigger on phrases like "write me a prompt for the agent," "package this for Claude Code," "make this into a task spec," "turn this into something agentic to run," or "draft an instruction the agent can execute." Produces a markdown file with goal, files, required changes, acceptance criteria, verification commands, and commit format. Handles standalone tasks and tasks descending from a larger project document. Interrogates only gaps it can't infer from context; never asks for what's already visible.
+description: Author a surgical agent task spec—a structured markdown file an autonomous coding agent reads to execute one bounded unit of work. Use when the user wants to draft an agent task, write an executable spec, package a conversation as something an agent can run independently, turn planning decisions into an executable instruction, or convert a discussion into a buildable task. Also trigger on phrases like "write me a prompt for the agent," "package this for my agent," "make this into a task spec," "turn this into something agentic to run," or "draft an instruction the agent can execute." Produces a markdown file with goal, files, required changes, acceptance criteria, verification commands, and commit format. Handles standalone tasks and tasks descending from a larger project document. Interrogates only gaps it can't infer from context; never asks for what's already visible.
 ---
 
 # Dandori (段取り)
@@ -57,9 +57,9 @@ Keep interrogating until every required section can be drafted unambiguously—m
 1. **Detect inputs from context.** Scan the conversation for goal, file boundaries, change list, acceptance signals, and verification commands. Note what's present and what's missing.
 2. **Check the kokoroe context.** See if the five guidelines (Context-first, Spec as authorization, Verify by command, Halt and surface, Honor the boundary) are loaded in the executing environment. They live in `KOKOROE.md`. Their presence determines how defensive the spec needs to be—see "Kokoroe context check" below.
 3. **Interrogate the gaps.** For each required section that isn't fully derivable from context, ask. Group questions thoughtfully; don't fire one at a time when several are related. Don't ask about things the conversation already established.
-4. **Draft the spec.** Read `FORMAT.md` for the full format reference. Read one or more files in `examples/` to calibrate against worked examples. Then draft.
+4. **Draft the spec.** Read `FORMAT.md` for the full format reference. When the target uses the Ho System (for example, Kamae-5 calls this skill or the project keeps a Ho process record), apply [HO.md](HO.md) to the format, examples, checklist, and output path. Read one or more files in `examples/` to calibrate against worked examples. Then draft.
 5. **Run the format checklist.** Before declaring the spec ready, verify against the checklist at the end of `FORMAT.md`. Each required section present? Acceptance criteria each verifiable by a runnable command? No pseudocode in Required Changes? No anti-patterns?
-6. **Save and present.** Write the file to `agent-tasks/agent-task-YYYY-MM-DD-slug.md` (or wherever the project's conventions place it—check for an existing `agent-tasks/` directory or ask). Present the file path to the practitioner.
+6. **Save and present.** Save the spec using the applicable filename and project directory below or in the rider. Present the file path to the practitioner.
 
 ## Brief format summary
 
@@ -86,17 +86,7 @@ The full reference is in `FORMAT.md`. One-line version of each section:
 
 The dandori format assumes the executing agent operates under kokoroe—the five guidelines documented in `KOKOROE.md`. Their job is to govern how the *executing* agent behaves, not how this authoring skill behaves. The format works to the extent the executing agent honors them.
 
-Two ways the agent can have them loaded:
-
-1. **In the project's `CLAUDE.md`** (or equivalent IDE config). Loaded once, applies every session. Cleanest pattern.
-2. **Embedded in the task spec itself.** Verbose, but works when there's no `CLAUDE.md` to lean on.
-
-Before drafting, check whether the guidelines are visible in current context—a loaded `CLAUDE.md`, the conversation, or an installed sibling skill. If yes, draft a tight spec. If no, offer the practitioner two paths:
-
-- "I can drop the guidelines into your project's `CLAUDE.md` once, so future tasks stay tight."
-- "I can write a defensive spec that includes the relevant guidelines inline."
-
-The practitioner picks once per project. The skill remembers within the session.
+Check what the **executing** agent will receive. It may run in a different tool, account, or session from the author. If the executor loads the guidelines from its project instructions, draft a tight spec. When it does not, offer to include the guidelines in the task or add them once to the project instructions the executor reads. See [KOKOROE.md](KOKOROE.md) for both forms.
 
 ## File location and naming
 
@@ -113,7 +103,7 @@ Sorts by date, carries semantics in the slug. Never pick the slug silently—con
 ## Reference files
 
 - **`FORMAT.md`**—the full format reference. Read when drafting any non-trivial task. Contains every section's purpose and shape, translation moves, anti-patterns, and the format checklist.
-- **`KOKOROE.md`**—the five guidelines. Documentation of what the executing agent operates under, and a copy-pasteable file for the practitioner to install in their `CLAUDE.md`.
+- **`KOKOROE.md`**—the five guidelines. Documentation of what the executing agent operates under, and a copy-pasteable file for the practitioner to install in their project instructions.
 - **`examples/standalone-utility.md`**—a no-parent maintenance task. Minimum-viable shape.
 - **`examples/parented-implementation.md`**—a feature implementation with `parent:` and `Context`. Fuller shape for tasks descending from a project document.
 - **`examples/exploration-with-stop-condition.md`**—an open-ended inspection task with `Stop Condition`. For tasks that may surface findings the agent shouldn't act on alone.

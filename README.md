@@ -24,19 +24,22 @@ dandori/
 ├── SKILL.md       # entry point
 ├── KOKOROE.md     # the five guidelines
 ├── FORMAT.md      # the spec format reference
-└── examples/      # three worked examples
+├── HO.md          # conventions for Ho System projects
+└── examples/      # worked task specs
 ```
 
 ---
 
 ## Install
 
-Clone into your `.claude/skills/` directory:
+From your project root, unpack the repository's [skill package](DANDORI.skill) into the skills directory your agent reads. For a project using Claude Code, download the package and run:
 
 ```bash
-cd .claude/skills
-git clone https://github.com/sageframe-no-kaji/dandori.git
+mkdir -p .claude/skills/dandori
+unzip -o /path/to/DANDORI.skill -d .claude/skills/dandori
 ```
+
+If you already have a Dandori checkout, the contents of its `skill/` directory are the same installable files.
 
 Install kokoroe at the project level so the agent loads it every session:
 
@@ -70,7 +73,7 @@ Other shapes that trigger the skill:
 - *"Package what we just decided as a spec"*
 - *"Turn this conversation into something the agent can run"*
 
-The skill interrogates you for what's missing, drafts the spec, and saves it. Worked examples live in [`examples/`](./examples).
+The skill interrogates you for what's missing, drafts the spec, and saves it. Worked examples live in [`examples/`](skill/examples).
 
 A generated spec looks roughly like this:
 

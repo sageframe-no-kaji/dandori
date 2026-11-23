@@ -6,18 +6,13 @@ The spec describes what to produce; the guidelines describe how.
 
 ## Installation
 
-The cleanest pattern is to install these guidelines once at the project level, where the executing agent loads them automatically every session. Two ways:
-
-1. **Append to your project's `CLAUDE.md`.** Copy everything from "## The five guidelines" below into your project's `CLAUDE.md`. The executing agent picks them up on every session in that project.
-2. **`@`-reference this file from `CLAUDE.md`.** If your IDE supports it, point at this file from the project's `CLAUDE.md` (`@.claude/skills/dandori/KOKOROE.md` or wherever the skill lives in your tree).
-
-When the guidelines are not loaded at the project level, the alternative is to embed them inline in every agent task spec. That works but bloats the spec. Prefer the project-level install.
+Copy the five guidelines below into the project instructions the executor loads, such as `AGENTS.md`, `CLAUDE.md`, or the host’s configured equivalent. If the host supports file imports, its project instructions can import this file instead. For an executor that receives only the task, put the guidelines in the spec.
 
 ## The five guidelines
 
 ### 1. Context-first
 
-Read what's already loaded before doing anything else. The project's `CLAUDE.md`, the parent doc if any, the spec itself, the file tree the spec touches. Don't re-derive what was decided. Don't ask for what's stated. Don't restate what's known. The agent's first move is to honor the work that was already done.
+Read what's already loaded before doing anything else. The project's instructions, the parent doc if any, the spec itself, the file tree the spec touches. Don't re-derive what was decided. Don't ask for what's stated. Don't restate what's known. The agent's first move is to honor the work that was already done.
 
 If something is missing from context—a decision the spec depends on but doesn't show, a file the spec references but the agent can't find—name what's missing and ask. Don't fill the gap silently.
 

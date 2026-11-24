@@ -34,7 +34,7 @@
         }
       ],
       "created": "2026-04-20",
-      "last_updated": "2026-07-09",
+      "last_updated": "2026-11-22",
       "conceived": "2026-05-10",
       "short_description": "A discipline for preparing bounded specifications that an autonomous coding agent can execute as one unit of work — published as a Claude Skill.",
       "substantive_description": [
@@ -55,7 +55,7 @@
       "availability": "shipped",
       "usage": "me",
       "_keisaku": {
-        "generated_at": "2026-11-17T15:26:25",
+        "generated_at": "2026-11-24T15:19:00",
         "generator_version": "1",
         "sources": {
           "readme": "README.md",
